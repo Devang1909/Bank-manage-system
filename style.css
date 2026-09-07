@@ -1,0 +1,698 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+body {
+    background: #f4f2fa;
+    color: #16151a;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    background: none;
+}
+
+
+/* ================= APP ================= */
+
+.app {
+    display: flex;
+    min-height: 100vh;
+}
+
+
+/* ================= SIDEBAR ================= */
+
+.sidebar {
+    width: 105px;
+    background: #f8f7ff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 25px 0;
+    border-right: 1px solid #eeeaf8;
+}
+
+.logo {
+    display: none;
+}
+
+.sidebar-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 22px;
+    margin-top: 30px;
+}
+
+.side-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: white;
+    font-size: 20px;
+    font-weight: 600;
+    box-shadow: 0 3px 15px rgba(0,0,0,0.04);
+}
+
+.side-btn.active {
+    border: 3px solid #a69ce9;
+}
+
+.add-btn {
+    background: #111;
+    color: white;
+}
+
+.logout-btn {
+    margin-top: auto;
+    font-size: 28px;
+}
+
+
+/* ================= MAIN ================= */
+
+.main {
+    flex: 1;
+    min-width: 0;
+}
+
+
+/* ================= NAVBAR ================= */
+
+.navbar {
+    height: 82px;
+    padding: 0 35px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(
+        90deg,
+        #9792e6,
+        #cbb4fa
+    );
+    color: white;
+}
+
+.navbar nav {
+    display: flex;
+    gap: 15px;
+}
+
+.nav-item {
+    padding: 13px 20px;
+    color: white;
+    font-size: 15px;
+    border-radius: 12px;
+}
+
+.nav-item.active {
+    background: rgba(255,255,255,0.28);
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.nav-right button {
+    color: white;
+    font-size: 20px;
+}
+
+.profile {
+    width: 43px;
+    height: 43px;
+    border-radius: 50%;
+    background: white;
+    color: #776cd0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.mobile-logo {
+    display: none;
+}
+
+
+/* ================= CONTENT ================= */
+
+.content {
+    padding: 25px 35px;
+}
+
+.breadcrumb {
+    color: #60606a;
+    margin-bottom: 28px;
+}
+
+.breadcrumb span {
+    padding: 0 12px;
+}
+
+.breadcrumb strong {
+    color: #9995a4;
+}
+
+
+/* ================= GRID ================= */
+
+.top-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1.1fr;
+    gap: 25px;
+}
+
+.middle-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr 1.1fr;
+    gap: 25px;
+    margin-top: 35px;
+}
+
+
+/* ================= COMMON ================= */
+
+.section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.section-title h2 {
+    font-size: 25px;
+}
+
+.section-title small {
+    color: #7669ca;
+    font-size: 13px;
+}
+
+.section-title button {
+    color: #77717f;
+}
+
+
+/* ================= PROMO ================= */
+
+.promo-card {
+    min-height: 225px;
+    border-radius: 25px;
+    padding: 28px;
+    background: linear-gradient(
+        120deg,
+        #f1efff,
+        #ddd9fa
+    );
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
+}
+
+.promo-text small {
+    font-size: 14px;
+}
+
+.promo-text h1 {
+    font-size: 30px;
+    margin: 25px 0 5px;
+}
+
+.promo-text h1 span {
+    color: #7663bd;
+}
+
+.promo-text p {
+    color: #77717f;
+}
+
+.learn-btn {
+    background: #111;
+    color: white;
+    padding: 13px 22px;
+    border-radius: 12px;
+    margin-top: 25px;
+}
+
+.promo-shape {
+    font-size: 120px;
+    color: #a99be8;
+    transform: rotate(25deg);
+    margin-top: 35px;
+}
+
+
+/* ================= BALANCE ================= */
+
+.balance-card {
+    height: 180px;
+    background: white;
+    border: 1px solid #eeeaf5;
+    border-radius: 25px;
+    padding: 25px;
+    position: relative;
+}
+
+.balance-card p {
+    color: #7563a5;
+}
+
+.balance-card h1 {
+    font-size: 38px;
+    margin-top: 10px;
+}
+
+.balance-card small {
+    position: absolute;
+    right: 25px;
+    bottom: 25px;
+    color: #776bc4;
+}
+
+.mini-bars {
+    display: flex;
+    align-items: end;
+    gap: 8px;
+    height: 45px;
+    margin-top: 10px;
+}
+
+.mini-bars span {
+    width: 15px;
+    border-radius: 6px;
+    background: #dcd6ef;
+}
+
+
+/* ================= BANK CARD ================= */
+
+.bank-card {
+    height: 190px;
+    padding: 25px;
+    border-radius: 25px;
+    color: white;
+    background: linear-gradient(
+        130deg,
+        #222522,
+        #6c7381,
+        #b7a8ed
+    );
+    box-shadow: 0 15px 30px rgba(60,50,100,.18);
+}
+
+.card-top,
+.card-bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-top span:first-child {
+    font-size: 20px;
+    font-style: italic;
+}
+
+.card-number {
+    margin-top: 55px;
+    font-size: 16px;
+    letter-spacing: 2px;
+}
+
+.card-bottom {
+    margin-top: 20px;
+}
+
+
+/* ================= QUICK SEND ================= */
+
+.send-card {
+    background: white;
+    padding: 25px;
+    border-radius: 25px;
+}
+
+.send-card p {
+    color: #817d89;
+}
+
+.send-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0 20px;
+}
+
+.send-row h1 {
+    font-size: 38px;
+}
+
+.send-row button {
+    background: #9790df;
+    color: white;
+    padding: 13px 20px;
+    border-radius: 12px;
+}
+
+.send-card hr {
+    border: none;
+    border-top: 1px solid #eee;
+}
+
+.recent-title {
+    margin-top: 20px;
+    margin-bottom: 12px;
+}
+
+.users {
+    display: flex;
+    align-items: center;
+}
+
+.user {
+    width: 42px;
+    height: 42px;
+    margin-right: -8px;
+    border-radius: 50%;
+    background: #ddd7f5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid white;
+    font-weight: bold;
+}
+
+.add-user {
+    width: 43px;
+    height: 43px;
+    margin-left: 20px;
+    border-radius: 50%;
+    background: #111;
+    color: white;
+    font-size: 22px;
+}
+
+
+/* ================= OVERVIEW ================= */
+
+.overview {
+    background: white;
+    padding: 25px;
+    border-radius: 25px;
+}
+
+.chart {
+    height: 230px;
+    display: flex;
+    align-items: end;
+    justify-content: space-around;
+    background: #f1effc;
+    border-radius: 20px;
+    padding: 25px 15px;
+}
+
+.chart-column {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    gap: 8px;
+}
+
+.bar {
+    width: 48px;
+    max-height: 150px;
+    min-height: 30px;
+    border-radius: 12px;
+    background: #dcd5ef;
+}
+
+.bar.selected {
+    background: #9a8bdc;
+}
+
+.chart-column span {
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.chart-column small {
+    font-weight: bold;
+}
+
+
+/* ================= SUBSCRIPTIONS ================= */
+
+.subscriptions {
+    background: transparent;
+}
+
+.subscription-icons {
+    display: flex;
+    gap: 5px;
+    margin-bottom: 15px;
+}
+
+.subscription-icons span {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+.subscription-item {
+    display: grid;
+    grid-template-columns: 42px 1fr auto 20px;
+    align-items: center;
+    gap: 10px;
+    padding: 13px;
+    background: white;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.service-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: #f1eff9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.subscription-item div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+}
+
+.subscription-item small {
+    color: #99939f;
+    margin-top: 3px;
+}
+
+
+/* ================= TRANSACTIONS ================= */
+
+.transactions {
+    margin-top: 40px;
+}
+
+.transaction-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.transaction-header h2 {
+    font-size: 25px;
+}
+
+.transaction-header small {
+    color: #776bc4;
+    font-size: 13px;
+}
+
+.transaction-header select {
+    border: none;
+    background: transparent;
+    padding: 10px;
+}
+
+.transaction-header button {
+    font-size: 24px;
+}
+
+.transaction {
+    display: grid;
+    grid-template-columns: 55px 1fr 100px 100px;
+    align-items: center;
+    gap: 15px;
+    padding: 16px;
+    background: white;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.transaction-icon {
+    width: 42px;
+    height: 42px;
+    border-radius: 12px;
+    background: #eeeafa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.transaction div:nth-child(2) {
+    display: flex;
+    flex-direction: column;
+}
+
+.transaction small {
+    color: #99939f;
+    margin-top: 3px;
+}
+
+.transaction span {
+    color: #8d8794;
+}
+
+.positive {
+    color: #4d9c6b;
+}
+
+.negative {
+    color: #d25e6b;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 1100px) {
+
+    .top-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .promo-card {
+        grid-column: span 2;
+    }
+
+    .middle-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .subscriptions {
+        grid-column: span 2;
+    }
+
+    .navbar nav {
+        gap: 5px;
+    }
+
+    .nav-item {
+        padding: 10px;
+    }
+}
+
+
+@media (max-width: 800px) {
+
+    .sidebar {
+        width: 70px;
+    }
+
+    .side-btn {
+        width: 42px;
+        height: 42px;
+    }
+
+    .navbar {
+        padding: 0 15px;
+    }
+
+    .navbar nav {
+        display: none;
+    }
+
+    .mobile-logo {
+        display: block;
+        font-size: 20px;
+        font-weight: bold;
+    }
+
+    .content {
+        padding: 20px;
+    }
+
+    .top-grid,
+    .middle-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .promo-card,
+    .subscriptions {
+        grid-column: auto;
+    }
+}
+
+
+@media (max-width: 550px) {
+
+    .sidebar {
+        display: none;
+    }
+
+    .navbar {
+        height: 65px;
+    }
+
+    .content {
+        padding: 15px;
+    }
+
+    .promo-card {
+        min-height: 250px;
+    }
+
+    .promo-text h1 {
+        font-size: 25px;
+    }
+
+    .balance-card h1 {
+        font-size: 30px;
+    }
+
+    .transaction {
+        grid-template-columns: 45px 1fr 80px;
+    }
+
+    .transaction b {
+        grid-column: 2 / 4;
+    }
+
+    .transaction span {
+        display: none;
+    }
+
+    .chart {
+        height: 200px;
+    }
+
+    .bar {
+        width: 35px;
+    }
+}

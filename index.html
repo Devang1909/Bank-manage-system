@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>OneBank Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ================= SIDEBAR ================= -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            onebank
+        </div>
+
+        <div class="sidebar-menu">
+
+            <button class="side-btn active">
+                ⠿
+            </button>
+
+            <button class="side-btn">
+                TD
+            </button>
+
+            <button class="side-btn">
+                M
+            </button>
+
+            <button class="side-btn">
+                ⚒
+            </button>
+
+            <button class="side-btn">
+                ◈
+            </button>
+
+            <button class="side-btn add-btn">
+                +
+            </button>
+
+        </div>
+
+        <button class="logout-btn">
+            ⇥
+        </button>
+
+    </aside>
+
+
+    <!-- ================= MAIN AREA ================= -->
+
+    <main class="main">
+
+        <!-- TOP NAVBAR -->
+
+        <header class="navbar">
+
+            <div class="mobile-logo">
+                onebank
+            </div>
+
+            <nav>
+
+                <button class="nav-item active">
+                    ▦ Dashboard
+                </button>
+
+                <button class="nav-item">
+                    ◉ Statistics
+                </button>
+
+                <button class="nav-item">
+                    ▣ My Wallet
+                </button>
+
+                <button class="nav-item">
+                    ⇅ Transfers
+                </button>
+
+                <button class="nav-item">
+                    ▤ Messages
+                </button>
+
+            </nav>
+
+            <div class="nav-right">
+
+                <button>⚙</button>
+                <button>♧</button>
+
+                <div class="profile">
+                    <span>DP</span>
+                </div>
+
+                <span>⌄</span>
+
+            </div>
+
+        </header>
+
+
+        <!-- ================= CONTENT ================= -->
+
+        <section class="content">
+
+            <div class="breadcrumb">
+                Dashboard
+                <span>›</span>
+                Monobank
+                <span>›</span>
+                <strong>Statistics</strong>
+            </div>
+
+
+            <!-- TOP CONTENT -->
+
+            <div class="top-grid">
+
+                <!-- PROMOTION -->
+
+                <div class="promo-card">
+
+                    <div class="promo-text">
+
+                        <small>onebank</small>
+
+                        <h1>
+                            All <span>banks</span> in one
+                        </h1>
+
+                        <p>
+                            Track the money you spend
+                        </p>
+
+                        <button class="learn-btn">
+                            Learn more
+                        </button>
+
+                    </div>
+
+                    <div class="promo-shape">
+                        ◯
+                    </div>
+
+                </div>
+
+
+                <!-- BALANCE -->
+
+                <div class="balance-section">
+
+                    <div class="section-title">
+
+                        <h2>Balance</h2>
+
+                        <button onclick="showBalanceDetails()">
+                            Details ›
+                        </button>
+
+                    </div>
+
+                    <div class="balance-card">
+
+                        <p>Revenue</p>
+
+                        <h1 id="balance">
+                            $3567.37
+                        </h1>
+
+                        <div class="mini-bars">
+
+                            <span style="height:25%"></span>
+                            <span style="height:65%"></span>
+                            <span style="height:45%"></span>
+                            <span style="height:20%"></span>
+                            <span style="height:70%"></span>
+
+                        </div>
+
+                        <small>↗ 26%</small>
+
+                    </div>
+
+                </div>
+
+
+                <!-- CARDS -->
+
+                <div class="cards-section">
+
+                    <div class="section-title">
+
+                        <h2>Your cards <small>3</small></h2>
+
+                        <div>
+                            <button onclick="previousCard()">‹</button>
+                            <button onclick="nextCard()">›</button>
+                        </div>
+
+                    </div>
+
+                    <div class="bank-card" id="bankCard">
+
+                        <div class="card-top">
+                            <span>VISA</span>
+                            <span>onebank</span>
+                        </div>
+
+                        <div class="card-number">
+                            4153 &nbsp; 2415 &nbsp; 3467 &nbsp; 8764
+                        </div>
+
+                        <div class="card-bottom">
+                            <span>06/25</span>
+                            <span>◉</span>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- SECOND ROW -->
+
+            <div class="middle-grid">
+
+                <!-- QUICK SEND -->
+
+                <div class="quick-send">
+
+                    <h2>Quick send</h2>
+
+                    <div class="send-card">
+
+                        <p>👥 Transfer to your family</p>
+
+                        <div class="send-row">
+
+                            <h1>$<span id="sendAmount">250</span></h1>
+
+                            <button onclick="transferMoney()">
+                                ⇧ Transfer
+                            </button>
+
+                        </div>
+
+                        <hr>
+
+                        <p class="recent-title">
+                            Recent users
+                        </p>
+
+                        <div class="users">
+
+                            <div class="user">A</div>
+                            <div class="user">J</div>
+                            <div class="user">M</div>
+                            <div class="user">R</div>
+                            <div class="user">S</div>
+
+                            <button class="add-user">
+                                +
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- OVERVIEW -->
+
+                <div class="overview">
+
+                    <div class="section-title">
+
+                        <h2>Overview</h2>
+
+                        <button>⋮</button>
+
+                    </div>
+
+                    <div class="chart">
+
+                        <div class="chart-column">
+                            <div class="bar" style="height:22%"></div>
+                            <span>22%</span>
+                            <small>Apr</small>
+                        </div>
+
+                        <div class="chart-column">
+                            <div class="bar" style="height:56%"></div>
+                            <span>56%</span>
+                            <small>May</small>
+                        </div>
+
+                        <div class="chart-column">
+                            <div class="bar" style="height:31%"></div>
+                            <span>31%</span>
+                            <small>Jun</small>
+                        </div>
+
+                        <div class="chart-column">
+                            <div class="bar selected" style="height:67%"></div>
+                            <span>67%</span>
+                            <small>Aug</small>
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- SUBSCRIPTIONS -->
+
+                <div class="subscriptions">
+
+                    <div class="section-title">
+
+                        <h2>
+                            Subscriptions
+                            <small>1</small>
+                        </h2>
+
+                        <button>
+                            Manage ›
+                        </button>
+
+                    </div>
+
+                    <div class="subscription-icons">
+
+                        <span>◉</span>
+                        <span>G</span>
+                        <span>◐</span>
+                        <span>➤</span>
+                        <span>◎</span>
+
+                    </div>
+
+                    <div class="subscription-item">
+
+                        <div class="service-icon">
+                            ➤
+                        </div>
+
+                        <div>
+                            <strong>Telegram</strong>
+                            <small>Next 15 Jul</small>
+                        </div>
+
+                        <b>$5.99</b>
+
+                        <button>⋮</button>
+
+                    </div>
+
+                    <div class="subscription-item">
+
+                        <div class="service-icon">
+                            N
+                        </div>
+
+                        <div>
+                            <strong>Netflix</strong>
+                            <small>Next 15 Jul</small>
+                        </div>
+
+                        <b>$14.99</b>
+
+                        <button>⋮</button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- TRANSACTIONS -->
+
+            <section class="transactions">
+
+                <div class="transaction-header">
+
+                    <h2>
+                        Transactions
+                        <small>3456</small>
+                    </h2>
+
+                    <div>
+
+                        <select id="transactionFilter"
+                                onchange="filterTransactions()">
+
+                            <option value="all">Recent</option>
+                            <option value="income">Income</option>
+                            <option value="expense">Expense</option>
+
+                        </select>
+
+                        <button>⌕</button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="transaction-list"
+                     id="transactionList">
+
+                    <div class="transaction income">
+
+                        <div class="transaction-icon">
+                            ↓
+                        </div>
+
+                        <div>
+                            <strong>Salary</strong>
+                            <small>Today, 10:30 AM</small>
+                        </div>
+
+                        <span>Income</span>
+
+                        <b class="positive">
+                            +$2,500
+                        </b>
+
+                    </div>
+
+
+                    <div class="transaction expense">
+
+                        <div class="transaction-icon">
+                            ↑
+                        </div>
+
+                        <div>
+                            <strong>Shopping</strong>
+                            <small>Yesterday, 05:20 PM</small>
+                        </div>
+
+                        <span>Expense</span>
+
+                        <b class="negative">
+                            -$120
+                        </b>
+
+                    </div>
+
+
+                    <div class="transaction income">
+
+                        <div class="transaction-icon">
+                            ↓
+                        </div>
+
+                        <div>
+                            <strong>Bank Deposit</strong>
+                            <small>05 Sep, 02:10 PM</small>
+                        </div>
+
+                        <span>Income</span>
+
+                        <b class="positive">
+                            +$500
+                        </b>
+
+                    </div>
+
+
+                    <div class="transaction expense">
+
+                        <div class="transaction-icon">
+                            ↑
+                        </div>
+
+                        <div>
+                            <strong>Netflix</strong>
+                            <small>04 Sep, 08:00 PM</small>
+                        </div>
+
+                        <span>Expense</span>
+
+                        <b class="negative">
+                            -$14.99
+                        </b>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script src="script.js"></script>
+
+</body>
+</html>
