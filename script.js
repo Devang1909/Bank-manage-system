@@ -291,3 +291,9 @@ document.addEventListener(
 
     }
 );
+
+// for this profile open page
+let profile=document.querySelector(".profile");
+profile.addEventListener("click",function(){
+    window.location.href="profile.html";
+})
