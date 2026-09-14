@@ -292,8 +292,17 @@ document.addEventListener(
     }
 );
 
+
 // for this profile open page
 let profile=document.querySelector(".profile");
 profile.addEventListener("click",function(){
     window.location.href="profile.html";
+})
+
+// .......top navbar.....
+// for statistic 
+
+let statisticbtn=document.querySelector("#statistics");
+statisticbtn.addEventListener("click",function(){
+    window.location.href="statistics.html";
 })
