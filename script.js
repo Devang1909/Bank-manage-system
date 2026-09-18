@@ -306,3 +306,22 @@ let statisticbtn=document.querySelector("#statistics");
 statisticbtn.addEventListener("click",function(){
     window.location.href="statistics.html";
 })
+
+// ...fro wallet.....
+let mywallet=document.querySelector("#mywallet");
+mywallet.addEventListener("click",function(){
+    window.location.href="mywallet.html";
+})
+
+// fro transfer
+let transfer=document.querySelector("#transfer");
+transfer.addEventListener("click",function(){
+    window.location.href="transfer.html";
+})
+
+// for msg
+let msg=document.querySelector("#msg");
+msg.addEventListener("click",function(){
+    window.location.href="msg.html";
+})
+

@@ -1,0 +1,954 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Messages - BankFlow</title>
+
+    <style>
+        
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f4f7fb;
+    color: #1e293b;
+}
+
+/* Navbar */
+
+.navbar {
+    min-height: 70px;
+    background: #102c50;
+    color: white;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 15px 40px;
+}
+
+.navbar h2 {
+    font-size: 25px;
+}
+
+.navbar ul {
+    display: flex;
+    list-style: none;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.navbar ul li a {
+    display: block;
+    text-decoration: none;
+    color: #d5dfec;
+
+    padding: 10px 13px;
+    border-radius: 7px;
+
+    transition: 0.3s;
+}
+
+.navbar ul li a:hover,
+.navbar ul li a.active {
+    background: #2563eb;
+    color: white;
+}
+
+#unreadCount {
+    background: #ef4444;
+    color: white;
+
+    font-size: 11px;
+    padding: 3px 7px;
+    border-radius: 10px;
+}
+
+
+/* Main Container */
+
+.main-container {
+    max-width: 1400px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
+
+.page-heading h1 {
+    font-size: 32px;
+    color: #102c50;
+}
+
+.page-heading p {
+    margin-top: 10px;
+    color: #64748b;
+}
+
+
+/* Message Layout */
+
+.message-layout {
+    display: grid;
+    grid-template-columns: 210px 1fr 1.2fr;
+
+    min-height: 560px;
+    margin-top: 30px;
+
+    background: white;
+    border: 1px solid #dbe5f1;
+    border-radius: 15px;
+
+    overflow: hidden;
+}
+
+
+/* Sidebar */
+
+.sidebar {
+    padding: 20px;
+    border-right: 1px solid #e2e8f0;
+}
+
+.folder {
+    width: 100%;
+    border: none;
+    background: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 14px 10px;
+    margin-bottom: 10px;
+
+    border-radius: 8px;
+    color: #475569;
+
+    font-size: 15px;
+    cursor: pointer;
+    text-align: left;
+}
+
+.folder:hover,
+.folder.active {
+    background: #eaf2ff;
+    color: #2563eb;
+}
+
+.folder span {
+    background: #e2e8f0;
+    padding: 3px 8px;
+    border-radius: 10px;
+    font-size: 12px;
+}
+
+.folder.active span {
+    background: #2563eb;
+    color: white;
+}
+
+.secure-box {
+    background: #eff6ff;
+    padding: 15px;
+    border-radius: 10px;
+    margin-top: 70px;
+}
+
+.secure-box h3 {
+    font-size: 14px;
+    color: #1d4ed8;
+}
+
+.secure-box p {
+    margin-top: 10px;
+    font-size: 12px;
+    line-height: 1.6;
+    color: #64748b;
+}
+
+
+/* Inbox */
+
+.inbox-section {
+    border-right: 1px solid #e2e8f0;
+    min-width: 0;
+}
+
+.inbox-header {
+    padding: 20px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.inbox-header h2 {
+    margin-bottom: 15px;
+}
+
+#searchMessages {
+    width: 100%;
+    padding: 11px;
+
+    border: 1px solid #dbe5f1;
+    border-radius: 8px;
+    outline: none;
+}
+
+#searchMessages:focus {
+    border-color: #2563eb;
+}
+
+
+/* Message Card */
+
+.message-card {
+    padding: 18px;
+    border-bottom: 1px solid #e2e8f0;
+
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.message-card:hover {
+    background: #f8fafc;
+}
+
+.message-card.selected {
+    background: #eff6ff;
+    border-left: 4px solid #2563eb;
+}
+
+.message-card.unread {
+    background: #f8fbff;
+}
+
+.message-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.message-top h3 {
+    font-size: 14px;
+    color: #102c50;
+}
+
+.message-top span {
+    color: #64748b;
+    font-size: 11px;
+    white-space: nowrap;
+}
+
+.message-card h4 {
+    font-size: 13px;
+    margin-top: 8px;
+    color: #1e40af;
+}
+
+.message-card p {
+    font-size: 12px;
+    margin-top: 8px;
+    color: #64748b;
+    line-height: 1.5;
+}
+
+.unread-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+
+    background: #2563eb;
+    border-radius: 50%;
+    margin-left: 5px;
+}
+
+
+/* Details */
+
+.details-section {
+    min-width: 0;
+}
+
+.details-header {
+    padding: 22px;
+    border-bottom: 1px solid #e2e8f0;
+
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 15px;
+}
+
+.details-header h2 {
+    font-size: 18px;
+    color: #102c50;
+}
+
+.details-header p {
+    margin-top: 8px;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.delete-btn {
+    border: none;
+    padding: 9px 12px;
+    border-radius: 7px;
+
+    background: #fee2e2;
+    color: #dc2626;
+    cursor: pointer;
+}
+
+.delete-btn:hover {
+    background: #fecaca;
+}
+
+.message-content {
+    padding: 25px;
+    min-height: 250px;
+}
+
+.message-content h3 {
+    font-size: 20px;
+    color: #102c50;
+}
+
+#detailDate {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #64748b;
+}
+
+#detailBody {
+    margin-top: 25px;
+    white-space: pre-line;
+    line-height: 1.8;
+    color: #475569;
+}
+
+
+/* Reply */
+
+.reply-form {
+    padding: 20px;
+    border-top: 1px solid #e2e8f0;
+}
+
+.reply-form textarea {
+    width: 100%;
+    padding: 12px;
+
+    border: 1px solid #dbe5f1;
+    border-radius: 8px;
+    resize: vertical;
+    outline: none;
+}
+
+.reply-form button {
+    margin-top: 12px;
+    padding: 11px 18px;
+
+    border: none;
+    border-radius: 7px;
+
+    background: #2563eb;
+    color: white;
+
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.reply-form button:hover {
+    background: #1d4ed8;
+}
+
+.empty-details {
+    padding: 50px 20px;
+    text-align: center;
+    color: #64748b;
+}
+
+.empty-details h2 {
+    color: #102c50;
+    margin-bottom: 10px;
+}
+
+
+/* Responsive */
+
+@media (max-width: 1100px) {
+
+    .navbar {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .message-layout {
+        grid-template-columns: 180px 1fr;
+    }
+
+    .details-section {
+        grid-column: 1 / -1;
+        border-top: 1px solid #e2e8f0;
+    }
+
+}
+
+@media (max-width: 650px) {
+
+    .main-container {
+        padding: 0 10px;
+    }
+
+    .message-layout {
+        display: block;
+    }
+
+    .sidebar {
+        border-right: none;
+        border-bottom: 1px solid #e2e8f0;
+    }
+
+    .secure-box {
+        margin-top: 20px;
+    }
+
+    .inbox-section {
+        border-right: none;
+    }
+
+    .details-section {
+        border-top: 1px solid #e2e8f0;
+    }
+
+}
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+
+        <h2>🏦 BankFlow</h2>
+
+        <ul>
+            <li><a href="dashboard.html">Dashboard</a></li>
+            <li><a href="profile.html">Profile</a></li>
+            <li><a href="transfer.html">Transfer</a></li>
+            <li><a href="statistics.html">Statistics</a></li>
+
+            <li>
+                <a href="messages.html" class="active">
+                    Messages <span id="unreadCount">3</span>
+                </a>
+            </li>
+        </ul>
+
+    </nav>
+
+
+    <!-- Main Content -->
+    <main class="main-container">
+
+        <div class="page-heading">
+            <h1>✉ Messages</h1>
+            <p>
+                Stay connected with your bank.
+                View important updates and messages.
+            </p>
+        </div>
+
+
+        <!-- Message Layout -->
+        <section class="message-layout">
+
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+
+                <button class="folder active" data-folder="inbox">
+                    📥 Inbox
+                    <span id="inboxCount">3</span>
+                </button>
+
+                <button class="folder" data-folder="sent">
+                    📤 Sent
+                    <span>0</span>
+                </button>
+
+                <button class="folder" data-folder="important">
+                    ⭐ Important
+                    <span>1</span>
+                </button>
+
+                <button class="folder" data-folder="archive">
+                    🗄 Archive
+                    <span>0</span>
+                </button>
+
+                <div class="secure-box">
+                    <h3>🔒 Secure Messages</h3>
+                    <p>
+                        Your banking information
+                        is protected.
+                    </p>
+                </div>
+
+            </aside>
+
+
+            <!-- Inbox -->
+            <section class="inbox-section">
+
+                <div class="inbox-header">
+
+                    <h2 id="folderTitle">Inbox</h2>
+
+                    <input
+                        type="text"
+                        id="searchMessages"
+                        placeholder="Search messages..."
+                    >
+
+                </div>
+
+
+                <!-- Message List -->
+                <div id="messageList">
+
+                    <!-- Messages will load here -->
+
+                </div>
+
+            </section>
+
+
+            <!-- Message Details -->
+            <section class="details-section">
+
+                <div id="emptyDetails" class="empty-details">
+                    <h2>📩 Select a message</h2>
+                    <p>
+                        Select a message to view its details.
+                    </p>
+                </div>
+
+                <div id="messageDetails" hidden>
+
+                    <div class="details-header">
+
+                        <div>
+                            <h2 id="detailSender">Bank Support</h2>
+                            <p id="detailEmail">
+                                support@bankflow.com
+                            </p>
+                        </div>
+
+                        <button
+                            id="deleteMessage"
+                            class="delete-btn"
+                        >
+                            🗑 Delete
+                        </button>
+
+                    </div>
+
+
+                    <div class="message-content">
+
+                        <h3 id="detailSubject">
+                            Welcome to BankFlow!
+                        </h3>
+
+                        <p id="detailDate"></p>
+
+                        <p id="detailBody"></p>
+
+                    </div>
+
+
+                    <!-- Reply Form -->
+                    <form id="replyForm" class="reply-form">
+
+                        <textarea
+                            id="replyInput"
+                            placeholder="Type your message..."
+                            rows="3"
+                            required
+                        ></textarea>
+
+                        <button type="submit">
+                            Send Reply ➤
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </section>
+
+        </section>
+
+    </main>
+
+
+    <script>
+        
+const messageList = document.getElementById("messageList");
+
+const searchMessages = document.getElementById("searchMessages");
+
+const folderTitle = document.getElementById("folderTitle");
+
+const messageDetails = document.getElementById("messageDetails");
+
+const emptyDetails = document.getElementById("emptyDetails");
+
+const detailSender = document.getElementById("detailSender");
+
+const detailEmail = document.getElementById("detailEmail");
+
+const detailSubject = document.getElementById("detailSubject");
+
+const detailDate = document.getElementById("detailDate");
+
+const detailBody = document.getElementById("detailBody");
+
+const deleteMessage = document.getElementById("deleteMessage");
+
+const replyForm = document.getElementById("replyForm");
+
+const replyInput = document.getElementById("replyInput");
+
+const unreadCount = document.getElementById("unreadCount");
+
+const inboxCount = document.getElementById("inboxCount");
+
+
+// Demo messages
+
+let messages = [
+    {
+        id: 1,
+        sender: "Bank Support",
+        email: "support@bankflow.com",
+        subject: "Welcome to BankFlow!",
+        body: "Hello Devang,\n\nThank you for joining BankFlow!\n\nWe are happy to have you with us. If you need help, contact our support team.\n\nBest Regards,\nBankFlow Team",
+        date: "Today, 10:24 AM",
+        folder: "inbox",
+        unread: true,
+        important: false
+    },
+
+    {
+        id: 2,
+        sender: "System Notifications",
+        email: "notifications@bankflow.com",
+        subject: "Account Update",
+        body: "Your account statement is ready to view.\n\nPlease check your account activity regularly.",
+        date: "Yesterday",
+        folder: "inbox",
+        unread: true,
+        important: false
+    },
+
+    {
+        id: 3,
+        sender: "Security Team",
+        email: "security@bankflow.com",
+        subject: "Login Alert",
+        body: "A login was detected on your account.\n\nIf this was not you, please contact bank support immediately.",
+        date: "Sep 12",
+        folder: "inbox",
+        unread: true,
+        important: true
+    },
+
+    {
+        id: 4,
+        sender: "Customer Support",
+        email: "support@bankflow.com",
+        subject: "Transaction Inquiry",
+        body: "Your transaction inquiry has been received.\n\nOur support team will review your request.",
+        date: "Sep 10",
+        folder: "inbox",
+        unread: false,
+        important: false
+    },
+
+    {
+        id: 5,
+        sender: "You",
+        email: "devang@example.com",
+        subject: "Help Request",
+        body: "Hello Bank Support,\n\nI need help with my account.",
+        date: "Sep 9",
+        folder: "sent",
+        unread: false,
+        important: false
+    }
+];
+
+
+let selectedMessageId = null;
+
+let currentFolder = "inbox";
+
+
+// Render messages
+
+function renderMessages() {
+
+    const searchText = searchMessages.value
+        .toLowerCase()
+        .trim();
+
+    let filteredMessages = messages.filter(function (msg) {
+
+        const matchesFolder =
+            currentFolder === "important"
+                ? msg.important && msg.folder === "inbox"
+                : msg.folder === currentFolder;
+
+        const matchesSearch =
+            msg.sender.toLowerCase().includes(searchText) ||
+            msg.subject.toLowerCase().includes(searchText) ||
+            msg.body.toLowerCase().includes(searchText);
+
+        return matchesFolder && matchesSearch;
+
+    });
+
+
+    messageList.innerHTML = "";
+
+    if (filteredMessages.length === 0) {
+
+        messageList.innerHTML = `
+            <div class="empty-details">
+                <h3>No messages found</h3>
+                <p>There are no messages in this folder.</p>
+            </div>
+        `;
+
+        return;
+    }
+
+
+    filteredMessages.forEach(function (msg) {
+
+        const card = document.createElement("div");
+
+        card.className = "message-card";
+
+        if (msg.unread) {
+            card.classList.add("unread");
+        }
+
+        if (msg.id === selectedMessageId) {
+            card.classList.add("selected");
+        }
+
+        const dot = msg.unread
+            ? `<span class="unread-dot"></span>`
+            : "";
+
+        card.innerHTML = `
+            <div class="message-top">
+                <h3>${escapeHTML(msg.sender)} ${dot}</h3>
+                <span>${escapeHTML(msg.date)}</span>
+            </div>
+
+            <h4>${escapeHTML(msg.subject)}</h4>
+
+            <p>${escapeHTML(msg.body.substring(0, 75))}...</p>
+        `;
+
+        card.addEventListener("click", function () {
+
+            openMessage(msg.id);
+
+        });
+
+        messageList.appendChild(card);
+
+    });
+
+}
+
+
+// Open message
+
+function openMessage(id) {
+
+    const msg = messages.find(function (item) {
+
+        return item.id === id;
+
+    });
+
+    if (!msg) return;
+
+    selectedMessageId = id;
+
+    msg.unread = false;
+
+    detailSender.textContent = msg.sender;
+
+    detailEmail.textContent = msg.email;
+
+    detailSubject.textContent = msg.subject;
+
+    detailDate.textContent = msg.date;
+
+    detailBody.textContent = msg.body;
+
+    emptyDetails.hidden = true;
+
+    messageDetails.hidden = false;
+
+    updateUnreadCount();
+
+    renderMessages();
+
+}
+
+
+// Folder buttons
+
+document.querySelectorAll(".folder").forEach(function (button) {
+
+    button.addEventListener("click", function () {
+
+        document.querySelectorAll(".folder").forEach(function (btn) {
+
+            btn.classList.remove("active");
+
+        });
+
+        button.classList.add("active");
+
+        currentFolder = button.dataset.folder;
+
+        folderTitle.textContent =
+            button.textContent.trim().replace(/\d+$/, "");
+
+        selectedMessageId = null;
+
+        emptyDetails.hidden = false;
+
+        messageDetails.hidden = true;
+
+        renderMessages();
+
+    });
+
+});
+
+
+// Search
+
+searchMessages.addEventListener("input", function () {
+
+    renderMessages();
+
+});
+
+
+// Delete message
+
+deleteMessage.addEventListener("click", function () {
+
+    if (selectedMessageId === null) return;
+
+    const confirmDelete = confirm(
+        "Are you sure you want to delete this message?"
+    );
+
+    if (!confirmDelete) return;
+
+    messages = messages.filter(function (msg) {
+
+        return msg.id !== selectedMessageId;
+
+    });
+
+    selectedMessageId = null;
+
+    emptyDetails.hidden = false;
+
+    messageDetails.hidden = true;
+
+    updateUnreadCount();
+
+    renderMessages();
+
+});
+
+
+// Reply demo
+
+replyForm.addEventListener("submit", function (event) {
+
+    event.preventDefault();
+
+    const reply = replyInput.value.trim();
+
+    if (!reply) return;
+
+    alert(
+        "Demo reply prepared.\n\n" +
+        "Actual sending requires a backend API."
+    );
+
+    replyInput.value = "";
+
+});
+
+
+// Unread count
+
+function updateUnreadCount() {
+
+    const count = messages.filter(function (msg) {
+
+        return msg.folder === "inbox" && msg.unread;
+
+    }).length;
+
+    unreadCount.textContent = count;
+
+    inboxCount.textContent = count;
+
+}
+
+
+// Basic HTML escaping for message content
+
+function escapeHTML(value) {
+
+    return String(value)
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#039;");
+
+}
+
+
+// Initial load
+
+updateUnreadCount();
+
+renderMessages();
+    </script>
+
+</body>
+</html>
