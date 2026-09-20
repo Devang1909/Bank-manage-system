@@ -323,5 +323,9 @@ transfer.addEventListener("click",function(){
 let msg=document.querySelector("#msg");
 msg.addEventListener("click",function(){
     window.location.href="msg.html";
-})
+})  
+
+
+
+
 
