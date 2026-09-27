@@ -5,6 +5,7 @@
 
 // Current balance
 let balance = 3567.37;
+const currency = "₹";
 
 
 // ==========================================
@@ -29,11 +30,14 @@ function transferMoney() {
 
     balance -= amount;
 
-    document.getElementById("balance").innerText =
-        "$" + balance.toFixed(2);
+    const balanceElement = document.getElementById("balance");
+    if (balanceElement) {
+        balanceElement.innerText =
+            currency + balance.toFixed(2);
+    }
 
     alert(
-        "Transfer successful!\nAmount: $" +
+        "Transfer successful!\nAmount: " + currency +
         amount.toFixed(2)
     );
 
@@ -53,6 +57,10 @@ function addTransaction(name, amount, type) {
 
     const list =
         document.getElementById("transactionList");
+
+    if (!list) {
+        return;
+    }
 
     const transaction =
         document.createElement("div");
@@ -78,7 +86,7 @@ function addTransaction(name, amount, type) {
         </span>
 
         <b class="${type === "income" ? "positive" : "negative"}">
-            ${sign}$${amount.toFixed(2)}
+            ${sign}${currency}${amount.toFixed(2)}
         </b>
     `;
 
@@ -139,7 +147,7 @@ function showBalanceDetails() {
 
     alert(
         "Account Balance\n\n" +
-        "Available Balance: $" +
+        "Available Balance: " + currency +
         balance.toFixed(2) +
         "\n\nAccount Type: Savings\n" +
         "Status: Active"
@@ -207,6 +215,10 @@ function updateCard() {
 
     const bankCard =
         document.getElementById("bankCard");
+
+    if (!bankCard) {
+        return;
+    }
 
     bankCard.innerHTML = `
 
@@ -294,36 +306,46 @@ document.addEventListener(
 
 
 // for this profile open page
-let profile=document.querySelector(".profile");
-profile.addEventListener("click",function(){
-    window.location.href="profile.html";
-})
+const profile = document.querySelector(".profile");
+if (profile) {
+    profile.addEventListener("click", function () {
+        window.location.href = "profile.html";
+    });
+}
 
 // .......top navbar.....
 // for statistic 
 
-let statisticbtn=document.querySelector("#statistics");
-statisticbtn.addEventListener("click",function(){
-    window.location.href="statistics.html";
-})
+const statisticButton = document.querySelector("#statistics");
+if (statisticButton) {
+    statisticButton.addEventListener("click", function () {
+        window.location.href = "statistics.html";
+    });
+}
 
 // ...fro wallet.....
-let mywallet=document.querySelector("#mywallet");
-mywallet.addEventListener("click",function(){
-    window.location.href="mywallet.html";
-})
+const walletButton = document.querySelector("#mywallet");
+if (walletButton) {
+    walletButton.addEventListener("click", function () {
+        window.location.href = "mywallet.html";
+    });
+}
 
 // fro transfer
-let transfer=document.querySelector("#transfer");
-transfer.addEventListener("click",function(){
-    window.location.href="transfer.html";
-})
+const transferButton = document.querySelector("#transfer");
+if (transferButton) {
+    transferButton.addEventListener("click", function () {
+        window.location.href = "transfer.html";
+    });
+}
 
 // for msg
-let msg=document.querySelector("#msg");
-msg.addEventListener("click",function(){
-    window.location.href="msg.html";
-})  
+const messagesButton = document.querySelector("#msg");
+if (messagesButton) {
+    messagesButton.addEventListener("click", function () {
+        window.location.href = "msg.html";
+    });
+}
 
 
 
